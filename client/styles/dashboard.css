@@ -1,0 +1,176 @@
+.dashboard-logo {
+	height: 80px;
+	width: 80px;
+	position: relative;
+	left: 20%;
+}
+
+.paper {
+	background-color: white;
+	border-radius: 10px;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+.lightCard {
+	background-color: #fff;
+	font-size: 15px;
+	font-weight: 300;
+	max-width: 100%;
+	padding: 20px;
+	font-family: sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	border: 1px solid #eeeeee !important;
+	word-spacing: 2px;
+	overflow: hidden;
+}
+
+.skyCard {
+	background-color: rgba(69, 82, 213, 0.1);
+	font-size: 15px;
+	font-weight: 300;
+	max-width: 100%;
+	padding: 20px;
+	min-height: 320px;
+	max-height: 320px;
+	font-family: sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	border: 1px solid #eeeeee !important;
+}
+
+.skyCardButton {
+	margin-top: 40px;
+	background: #4552D5;
+	color: white;
+	margin-bottom: 5px;
+}
+
+.barChartCard {
+	height: 320px;
+	border-color: rgb(237, 237, 237);
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 100%;
+	border: 1px solid #eeeeee !important;
+}
+
+.pieChartCard {
+	height: 300px;
+	padding: 1.5rem;
+	border-color: rgb(237, 237, 237);
+	border: 1px solid #eeeeee !important;
+}
+
+.pieText {
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.7);
+	font-weight: 500;
+	line-height: 21px;
+	position: relative;
+	top: 5%;
+}
+
+.pieChartTextTable {
+	border-collapse: collapse;
+	width: 200px;
+	font-weight: 300;
+	font-size: 14px;
+}
+
+.pieChartSuccessBox {
+	height: 10px;
+	width: 10px;
+	background-color: tomato;
+}
+
+.pieChartFailureBox {
+	height: 10px;
+	width: 10px;
+	background-color: lightgray;
+}
+
+.cartesian-grid path:hover {
+	stroke: #fff;
+	background: white;
+}
+
+/* ====== ( Table Style ) ====== */
+.productListTable {
+    background-color: white;
+    border: none !important;
+}
+
+/* -- Table Text Customisation -- */
+.productListTable div {
+    font: 300 1vmax sans-serif;
+    color: rgba(0, 0, 0, 0.678);
+	font-size: 14px;
+    border: none !important;
+}
+
+/* -- Customise the Table Heading Icons Colors and Size and also for Actions Icons of Table -- */
+.productListTable a,
+.productListTable button {
+	color: white;
+    transition: all 0.5s;
+	font-size: 18px;
+	margin: 5px;
+}
+
+.productListTable a:hover {
+    color: tomato;
+}
+
+.productListTable button:hover {
+    color: rgb(236, 30, 30);
+}
+
+/* -- Table Headers Text Color -- */
+.MuiDataGrid-columnHeader div {
+    color: rgb(255, 255, 255);
+}
+
+/* ======= ( Mobile Friendly Code ) ====== */
+@media only screen and (max-width: 768px) {
+	.skyCard {
+		margin-top: 1rem;
+		font-size: 18px;
+	}
+
+	.skyCardButton2 {
+		margin-bottom: 4rem;
+	}
+
+	.pieChartCard {
+		margin-bottom: 2rem;
+	}
+
+	.pieChartWrapper {
+		left: 10%;
+		transform: translate(-10%, 0);
+	}
+
+	.pieText {
+		font-size: 17px;
+	}
+
+	.productListTable div {
+        font: 300 4vw sans-serif;
+    }
+}
