@@ -11,8 +11,8 @@ import {
 } from '@/redux/reducers/productReducers';
 
 import { allUsersReducer, updateUserReducer, oneUserReducer, deleteUserReducer } from '@/redux/reducers/userReducers';
-
 import { cartReducer } from '@/redux/reducers/cartReducers';
+import { authLoginReducer } from '@/redux/reducers/authReducers';
 
 
 const reducer = combineReducers({
@@ -28,6 +28,8 @@ const reducer = combineReducers({
     deletedUser: deleteUserReducer,
 
     cart: cartReducer,
+
+    login: authLoginReducer,
 });
 
 const initialState = {

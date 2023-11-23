@@ -1,0 +1,5 @@
+export const LOGIN_AUTH_REQUEST = "LOGIN_AUTH_REQUEST";
+export const LOGIN_AUTH_SUCCESS = "LOGIN_AUTH_SUCCESS";
+export const LOGIN_AUTH_FAIL = "LOGIN_AUTH_FAIL";
+
+export const CLEAR_DATA = "CLEAR_DATA";

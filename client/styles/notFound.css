@@ -1,0 +1,11 @@
+.not-found-comp {
+    position: relative;
+    left: 50%;
+    top: 15vh;
+    transform: translate(-50%, -50%);
+}
+
+.not-found-comp > h3 {
+    font-size: 25px;
+    /* color: gray; */
+}

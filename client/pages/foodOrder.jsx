@@ -6,6 +6,7 @@ import FoodCard from '@/components/Foods/FoodCard';
 import Pagination from '@/components/widgets/Pagination';
 import ShoppingCart from '@/components/widgets/Cart';
 import SkeletonLaoding from '@/components/widgets/Loading/Skeleton';
+import NotFound from '@/components/widgets/NotFound';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '@/redux/actions/productActions';
@@ -50,6 +51,14 @@ const FoodOrder = () => {
 
   // Render Foods Or Loading Skeleton..
   const renderFoods = (loading, foods) => {
+    if (!foods?.length && !loading) {
+      return (
+        <>
+          <NotFound title="Not Found Any Foods!" />
+        </>
+      )
+    }
+
     if (!loading) {
       return foods?.map(food => (
         <div key={food._id}>
@@ -85,7 +94,7 @@ const FoodOrder = () => {
       <ShoppingCart />
 
       {/*------------ Food Grid Section ----------*/}
-      <section id="food-list" className="mt-5 mb-5">
+      <section id="food-list" className="mt-5 mb-5" style={{ minHeight: '50vh' }}>
         <div className="container">
           <div className="food-list-header">
             <h3 className="text-capitalize text-danger">

@@ -9,6 +9,7 @@ import '@/styles/pagination.css';
 import '@/styles/sidebar.css';
 import '@/styles/cart.css';
 import '@/styles/cartItem.css';
+import '@/styles/notFound.css';
 
 import {Provider} from 'react-redux';
 import store from '@/redux/store';

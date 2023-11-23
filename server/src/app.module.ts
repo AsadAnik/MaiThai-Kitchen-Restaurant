@@ -11,8 +11,8 @@ import { ProductsModule } from './products/products.module';
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/my-database', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      useNewUrlParser: false,
+      useUnifiedTopology: false,
       connectTimeoutMS: 5000, // 5 seconds
     }),
     UsersModule,

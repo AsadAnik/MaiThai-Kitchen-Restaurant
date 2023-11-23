@@ -11,7 +11,7 @@ export const useGetItems = (type, newItem = '', updatedItem, deletedItem) => {
     // Hook for Products Fetching..
     useEffect(() => {
         if (item.error) {
-            toast.error(`${error}!`, {
+            toast.error(`${item.error}!`, {
                 position: "bottom-right",
                 autoClose: 2000,
                 theme: "colored",
@@ -26,9 +26,9 @@ export const useGetItems = (type, newItem = '', updatedItem, deletedItem) => {
             dispatch(getUsers());
         }
 
-    }, [dispatch, item.error, newItem, updatedItem, deletedItem]);
+    }, [dispatch, newItem, updatedItem, deletedItem]);
 
-    return [item.loading, item[`${type}`]];
+    return [item?.loading, item[`${type}`]];
 };
 
 export default useGetItems;

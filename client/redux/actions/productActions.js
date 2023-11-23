@@ -50,8 +50,12 @@ export const getProducts = (limit, page, search, priceRange, category) => async 
         }
 
         if (category) {
-            if (category !== 'All' || category !== 'all') {
+            if (category?.toLowerCase() !== 'all') {
                 URL_REQUEST += `?category=${category}`;
+            }
+
+            if (category?.toLowerCase() === 'all') {
+                URL_REQUEST += `/`;
             }
         }
 
