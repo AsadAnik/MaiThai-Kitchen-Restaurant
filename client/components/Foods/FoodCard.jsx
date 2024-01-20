@@ -21,7 +21,6 @@ export default function FoodCard({ productId, name, category, regularPrice, main
     return (
         <div className="col mb-4">
             <div className="card h-100">
-                {/* <img src={`/images/${image}`} className="card-img-top img-thumbnail grid-card-img" alt="..." /> */}
                 <img src={`${image}`} className="card-img-top img-thumbnail grid-card-img" alt="..." />
                 <div className="card-body grid-body">
                     <h5 className="card-title">{name}</h5>

@@ -10,6 +10,11 @@ export class ProductsService {
     @InjectModel(Product.name) private productModel: Model<Product>,
   ) { }
 
+  /**
+   * CREATE PRODUCT
+   * @param productData 
+   * @returns 
+   */
   async create(productData: CreateProductDto): Promise<Product> {
     const createdProduct = new this.productModel({
       name: productData.name,
@@ -22,6 +27,11 @@ export class ProductsService {
     return createdProduct.save();
   }
 
+  /**
+   * FIND PRODUCT BY PRODUCT_ID
+   * @param productId 
+   * @returns 
+   */
   async findOne(productId: string): Promise<Product> {
     const product = await this.productModel.findById(productId);
     if (!product)
@@ -29,6 +39,10 @@ export class ProductsService {
     return product;
   }
 
+  /**
+   * FIND ALL PRODUCTS
+   * @returns 
+   */
   async findAll(): Promise<Product[]> {
     const products = await this.productModel.find();
     if (!products.length)
@@ -36,6 +50,17 @@ export class ProductsService {
     return products;
   }
 
+  /**
+   * FIND PRODUCT WITH DIFFERENT FILTERS
+   * (Pagination, Min & Max Price Products, Category wise Products, Category wise Products, Searching Products)
+   * @param page 
+   * @param limit 
+   * @param minPrice 
+   * @param maxPrice 
+   * @param category 
+   * @param search 
+   * @returns 
+   */
   async findWithFeature(
     page?: number,
     limit?: number,
@@ -69,7 +94,7 @@ export class ProductsService {
       const regex = new RegExp(category, 'i');
       productQuery = productQuery.where('category', regex);
     }
-    
+
     const allProducts = await this.productModel.find();
     const products = await productQuery.exec();
     const searchedProducts = await searchedProductQuery.exec();
@@ -78,6 +103,12 @@ export class ProductsService {
     return [allProducts, products, searchedProducts, count];
   }
 
+  /**
+   * UPDATE PRODUCT BY PRODUCT_ID & PRODUCT_DATA
+   * @param productId 
+   * @param updateProductData 
+   * @returns 
+   */
   async update(
     productId: string,
     updateProductData: UpdateProductDto,
@@ -95,6 +126,11 @@ export class ProductsService {
     return updatedProduct;
   }
 
+  /**
+   * DELETE PRODUCT BY PRODUCT_ID
+   * @param productId 
+   * @returns 
+   */
   async delete(productId: string): Promise<Product> {
     const deletedProduct = await this.productModel.findByIdAndDelete(productId);
     if (!deletedProduct)

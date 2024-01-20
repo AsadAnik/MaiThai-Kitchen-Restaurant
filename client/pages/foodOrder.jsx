@@ -5,27 +5,25 @@ import Sidebar from '@/components/Sidebar';
 import FoodCard from '@/components/Foods/FoodCard';
 import Pagination from '@/components/widgets/Pagination';
 import ShoppingCart from '@/components/widgets/Cart';
-import SkeletonLaoding from '@/components/widgets/Loading/Skeleton';
-import NotFound from '@/components/widgets/NotFound';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '@/redux/actions/productActions';
 import { toast } from 'react-toastify';
-
+import RenderItems from '@/Hooks/useRenderItems';
 
 // Food Oder Page Component..
 const FoodOrder = () => {
   const dispatch = useDispatch();
 
-  const { 
-    loading, 
-    error, 
-    products, 
-    searchedProducts, 
-    currentPage, 
-    perPage, 
-    totalPages, 
-    totalProducts 
+  const {
+    loading,
+    error,
+    products,
+    searchedProducts,
+    currentPage,
+    perPage,
+    totalPages,
+    totalProducts
   } = useSelector((state) => state.products);
 
   const [onSearch, setOnSearch] = useState(false);
@@ -45,40 +43,24 @@ const FoodOrder = () => {
 
   // Hook for Products Fetching..
   useEffect(() => {
-      dispatch(getProducts(6, pageNo));
+    dispatch(getProducts(6, pageNo));
   }, [dispatch, pageNo]);
 
 
-  // Render Foods Or Loading Skeleton..
-  const renderFoods = (loading, foods) => {
-    if (!foods?.length && !loading) {
-      return (
-        <>
-          <NotFound title="Not Found Any Foods!" />
-        </>
-      )
-    }
-
-    if (!loading) {
-      return foods?.map(food => (
-        <div key={food._id}>
-          <FoodCard
-            productId={food._id}
-            name={food.name}
-            category={food.category}
-            regularPrice={food.price}
-            mainPrice={food.price}
-            image={food.image}
-          />
-        </div>
-      ))
-    }
-
-    return (
-      <>
-        <SkeletonLaoding size={6} />
-      </>
-    );
+  // RENDER ITEMS ON FUNCTION..
+  const renderFoods = (foods) => {
+    return foods?.map(food => (
+      <div key={food._id}>
+        <FoodCard
+          productId={food._id}
+          name={food.name}
+          category={food.category}
+          regularPrice={food.price}
+          mainPrice={food.price}
+          image={food.image}
+        />
+      </div>
+    ));
   };
 
 
@@ -100,7 +82,7 @@ const FoodOrder = () => {
             <h3 className="text-capitalize text-danger">
               {!onSearch ?
                 `food grids, food catagories & (${totalProducts}) foods`
-              :
+                :
                 `Search Results Found: (${searchedProducts?.length}) Items`}
             </h3>
           </div>
@@ -115,13 +97,15 @@ const FoodOrder = () => {
             <div className="grid-area col-md-9 col-sm-8 col-xs-12">
               {/*----- Food Grid Cards With Row & Cols -------*/}
               <div className="row row-cols-1 row-cols-md-3">
-                  {renderFoods(loading, !onSearch ? products : searchedProducts)}
+                <RenderItems loading={loading} items={!onSearch ? products : searchedProducts}>
+                  {renderFoods(!onSearch ? products : searchedProducts)}
+                </RenderItems>
               </div>
 
               {/*----------- Page Pagination Bar -----------*/}
               {!onSearch && !onFilter && totalPages > 1 && (
-                <Pagination 
-                  currentPage={currentPage} 
+                <Pagination
+                  currentPage={currentPage}
                   resultPerPage={perPage}
                   totalResultsCount={totalProducts}
                   handleCurrentPageNo={(event) => setPageNo(event)}

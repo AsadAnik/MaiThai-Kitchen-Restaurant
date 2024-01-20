@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getAdminProducts } from '@/redux/actions/productActions';
 import { getUsers } from '@/redux/actions/userActions';
+import { getAllPackages } from '@/redux/actions/packageActions';
 
-export const useGetItems = (type, newItem = '', updatedItem, deletedItem) => {
+export const useGetItems = (type, newItem = '', updatedItem = null, deletedItem = null) => {
     const dispatch = useDispatch();
     const item = useSelector((state) => state[`${type}`]);
 
@@ -24,6 +25,10 @@ export const useGetItems = (type, newItem = '', updatedItem, deletedItem) => {
 
         if (type === 'users') {
             dispatch(getUsers());
+        }
+
+        if (type === 'packages') {
+            dispatch(getAllPackages());
         }
 
     }, [dispatch, newItem, updatedItem, deletedItem]);

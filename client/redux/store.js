@@ -10,6 +10,14 @@ import {
     deleteProductReducer,
 } from '@/redux/reducers/productReducers';
 
+import {
+    allPackagesReducer,
+    createNewPackageReducer,
+    onePackageReducer,
+    updatePackageReducer,
+    deletePackageReducer
+} from '@/redux/reducers/packageReducers';
+
 import { allUsersReducer, updateUserReducer, oneUserReducer, deleteUserReducer } from '@/redux/reducers/userReducers';
 import { cartReducer } from '@/redux/reducers/cartReducers';
 import { authLoginReducer } from '@/redux/reducers/authReducers';
@@ -21,6 +29,12 @@ const reducer = combineReducers({
     product: oneProductReducer,
     updatedProduct: updateProductReducer,
     deletedProduct: deleteProductReducer,
+
+    packages: allPackagesReducer,
+    newPackage: createNewPackageReducer,
+    package: onePackageReducer,
+    updatedPackage: updatePackageReducer,
+    deletedPackage: deletePackageReducer,
 
     users: allUsersReducer,
     user: oneUserReducer,

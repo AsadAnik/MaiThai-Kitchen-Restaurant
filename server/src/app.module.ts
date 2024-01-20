@@ -7,6 +7,7 @@ import { HttpExceptionFilter } from './common/exceptions/HttpException.filter';
 import { ResponseInterceptor } from './common/interceptors/HttpResponse.interceptor';
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
+import { PackagesModule } from './packages/packages.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ProductsModule } from './products/products.module';
     }),
     UsersModule,
     ProductsModule,
+    PackagesModule,
   ],
   controllers: [AppController],
   providers: [
