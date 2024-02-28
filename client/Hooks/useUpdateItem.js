@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { updateProduct } from '@/redux/actions/productActions';
+import {updatePackage} from '@/redux/actions/packageActions'
 import { updateUser } from '@/redux/actions/userActions';
 import { CLEAR_DATA } from '@/redux/constants/productConstants';
 
@@ -21,7 +22,7 @@ const useUpdateItem = (type, typeFor, selectedItem, setSelectedItemData) => {
         }
 
         if (item?.updated) {
-            toast.warn(`Item Updated! [${item[`${type}`]._id}]`, {
+            toast.warn(`Item Updated! [${item[`${type}`]?._id}]`, {
                 position: "top-center",
                 autoClose: 2000,
             });
@@ -36,15 +37,15 @@ const useUpdateItem = (type, typeFor, selectedItem, setSelectedItemData) => {
 
     // One Item Set For Update..
     useEffect(() => {
-        if (selectedItem._id) {
+        if (selectedItem?._id) {
             if (type === 'product') {
                 setSelectedItemData({
-                    name: selectedItem.name,
-                    details: selectedItem.details,
-                    price: selectedItem.price,
-                    image: selectedItem.image,
-                    category: selectedItem.category,
-                    stock: selectedItem.stock,
+                    name: selectedItem?.name,
+                    details: selectedItem?.details,
+                    price: selectedItem?.price,
+                    image: selectedItem?.image,
+                    category: selectedItem?.category,
+                    stock: selectedItem?.stock,
                 });
             }
 
@@ -55,7 +56,21 @@ const useUpdateItem = (type, typeFor, selectedItem, setSelectedItemData) => {
                     role: selectedItem.role,
                 });
             }
+
+            if(type === 'package') {
+                setSelectedItemData({
+                    name: selectedItem?.name,
+                    details: selectedItem?.details,
+                    price: selectedItem?.price,
+                    image: selectedItem?.image,
+                    category: selectedItem?.category,
+                    stock: selectedItem?.stock,
+                    package: selectedItem?.package
+                })
+            }
         }
+
+      
 
         return () => {
             setSelectedItemData({});
@@ -80,6 +95,10 @@ export const handleUpdateItem = (event, type, dispatch, updatedItemLoading, moda
             case "user":
                 dispatch(updateUser(selectedItem, selectedItemData));
                 break;
+
+            case 'package': 
+                    dispatch(updatePackage(selectedItem, selectedItemData));
+                    break;
 
             default:
                 return null;

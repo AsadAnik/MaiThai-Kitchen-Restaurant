@@ -8,6 +8,9 @@ import { ResponseInterceptor } from './common/interceptors/HttpResponse.intercep
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { PackagesModule } from './packages/packages.module';
+import { AdminController } from './admin/admin.controller';
+import { AdminService } from './admin/admin.service';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -19,6 +22,7 @@ import { PackagesModule } from './packages/packages.module';
     UsersModule,
     ProductsModule,
     PackagesModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [
