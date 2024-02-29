@@ -18,9 +18,12 @@ export class AuthService {
     async create(userData: CreateUserDto): Promise<User> {
         const hashPassword = await this.hashPassword(userData.password);
         const createUser = new this.userModal({
-            name: userData.name,
+            firstName: userData.firstName,
+            lastName: userData.lastName,
             email: userData.email,
-            password: hashPassword
+            password: hashPassword,
+            phoneNumber: userData.phoneNumber,
+            address: userData.address
         });
         return createUser.save();
     }

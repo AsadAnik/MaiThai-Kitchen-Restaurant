@@ -20,7 +20,7 @@ import {
 
 import { allUsersReducer, updateUserReducer, oneUserReducer, deleteUserReducer } from '@/redux/reducers/userReducers';
 import { cartReducer } from '@/redux/reducers/cartReducers';
-import { authLoginReducer } from '@/redux/reducers/authReducers';
+import { authLoginReducer, authRegisterReducer } from '@/redux/reducers/authReducers';
 
 
 const reducer = combineReducers({
@@ -32,7 +32,7 @@ const reducer = combineReducers({
 
     packages: allPackagesReducer,
     newPackage: createNewPackageReducer,
-    package: onePackageReducer,
+    packageReq: onePackageReducer,
     updatedPackage: updatePackageReducer,
     deletedPackage: deletePackageReducer,
 
@@ -44,6 +44,7 @@ const reducer = combineReducers({
     cart: cartReducer,
 
     login: authLoginReducer,
+    register: authRegisterReducer
 });
 
 const initialState = {

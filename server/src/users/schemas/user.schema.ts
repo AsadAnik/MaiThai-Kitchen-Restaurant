@@ -4,13 +4,22 @@ import { Document } from 'mongoose';
 @Schema()
 export class User extends Document {
   @Prop({ required: true })
-  name: string;
+  firstName: string;
+
+  @Prop({ required: true })
+  lastName: string;
 
   @Prop({ required: true, unique: true })
   email: string;
 
   @Prop({ required: true })
   password: string;
+
+  @Prop ({required: false})
+  address: string;
+
+  @Prop ({required: false})
+  phoneNumber: string;
   
   @Prop({ default: 'customer', enum: ['customer', 'admin', 'owner'] })
   role: string;

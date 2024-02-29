@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { createProduct } from '@/redux/actions/productActions';
 import { CLEAR_DATA } from '@/redux/constants/productConstants';
+import { createPackage } from '@/redux/actions/packageActions';
 
 
 const useCreateItem = (type, typeFor) => {
@@ -45,7 +46,11 @@ export const handleCreateItem = (event, type, dispatch, newItemLoading, newItemD
             // Dispatch to Create Product..
             dispatch(createProduct(newItemData));
             break;
-
+        
+        case 'package': 
+            // Dispatch to create package
+            dispatch(createPackage(newItemData));
+            break;
         default:
             return null;
     }
