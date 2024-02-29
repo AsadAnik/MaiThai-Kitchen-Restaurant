@@ -5,6 +5,7 @@ import { IoFastFoodOutline } from 'react-icons/io5';
 import { FiUsers } from 'react-icons/fi';
 import { VscOpenPreview } from 'react-icons/vsc';
 import { MdOutlineInventory2 } from 'react-icons/md';
+import { VscPackage } from "react-icons/vsc";
 import { primaryColor } from '@/utils/variables';
 
 
@@ -91,6 +92,20 @@ const SidebarItems = () => {
                         style={{ color: selectorStyle('inventoryManage') }}
                     >
                         Inventory Manage
+                    </Link>
+                </li>
+                <li>
+                    <VscPackage
+                        size={22}
+                        style={{ color: selectorStyle('packagesManage') }}
+                    />
+
+                    <Link
+                        href="/dashboard/packageManage"
+                        className="px-3 text-decoration-none"
+                        style={{ color: selectorStyle('packagesManage') }}
+                    >
+                        Package Manage
                     </Link>
                 </li>
             </ul>

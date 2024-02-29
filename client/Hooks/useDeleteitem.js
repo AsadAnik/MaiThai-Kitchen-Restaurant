@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { deleteProduct } from '@/redux/actions/productActions';
 import { deleteUser } from '@/redux/actions/userActions';
+import { deletePackage } from '@/redux/actions/packageActions';
 import { CLEAR_DATA } from '@/redux/constants/productConstants';
 
 
@@ -21,7 +22,7 @@ const useDeleteItem = (type, typeFor) => {
         }
 
         if (item?.deleted) {
-            toast.error(`Item Deleted! [${item[`${type}`]._id}]`, {
+            toast.error(`Item Deleted! [${item[`${type}`]?._id}]`, {
                 position: "top-center",
                 autoClose: 2000,
             });
@@ -45,6 +46,9 @@ export const handleItemDelete = (event, type, dispatch, itemId) => {
     if (shouldDelete) {
         if (type === 'product') {
             dispatch(deleteProduct(itemId));
+        }
+        if(type === 'package'){
+            dispatch(deletePackage(itemId));
         }
 
         if (type === 'user') {

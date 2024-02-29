@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getOneProduct } from '@/redux/actions/productActions';
 import { getOneUser } from '@/redux/actions/userActions';
+import { getOnePackage } from '@/redux/actions/packageActions';
 
 const useSelectedItem = (type, selectedItem) => {
     const dispatch = useDispatch();
@@ -21,6 +22,10 @@ const useSelectedItem = (type, selectedItem) => {
         if (selectedItem) {
             if (type === 'product') {
                 dispatch(getOneProduct(selectedItem));
+            }
+
+            if(type === 'package'){
+                dispatch(getOnePackage(selectedItem));
             }
 
             if (type === 'user') {
