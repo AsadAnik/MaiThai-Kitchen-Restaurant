@@ -6,7 +6,18 @@ import { UpdateUserDto } from './users.dto';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
+  constructor(@InjectModel(User.name) private userModel: Model<User>) { }
+
+  /**
+   * Find User by Verification Code
+   * @param code 
+   * @returns 
+   */
+  async findByVerificationCode(code: string): Promise<User> {
+    const user = await this.userModel.findOne({ verificationCode: code }).exec();
+    if (!user) throw new HttpException(`Invalid Verification Code`, HttpStatus.BAD_REQUEST);
+    return user;
+  }
 
   /**
    * Find All Users
@@ -32,15 +43,8 @@ export class UsersService {
    * @returns 
    */
   async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
-    const updatedUser = await this.userModel
-      .findByIdAndUpdate(id, updateUserDto, { new: true })
-      .exec();
-
-    if (!updatedUser)
-      throw new HttpException(
-        `User with id ${id} not found`,
-        HttpStatus.NOT_FOUND,
-      );
+    const updatedUser = await this.userModel.findByIdAndUpdate(id, updateUserDto, { new: true }).exec();
+    if (!updatedUser) throw new HttpException(`User with id ${id} not found`, HttpStatus.NOT_FOUND);
     return updatedUser;
   }
 
@@ -51,11 +55,7 @@ export class UsersService {
    */
   async delete(id: string): Promise<User> {
     const deletedUser = await this.userModel.findByIdAndDelete(id).exec();
-    if (!deletedUser)
-      throw new HttpException(
-        `User with id ${id} not found`,
-        HttpStatus.NOT_FOUND,
-      );
+    if (!deletedUser) throw new HttpException(`User with id ${id} not found`, HttpStatus.NOT_FOUND);
     return deletedUser;
   }
 }

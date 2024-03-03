@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HttpExceptionFilter } from './common/exceptions/HttpException.filter';
@@ -8,13 +9,13 @@ import { ResponseInterceptor } from './common/interceptors/HttpResponse.intercep
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { PackagesModule } from './packages/packages.module';
-import { AdminController } from './admin/admin.controller';
-import { AdminService } from './admin/admin.service';
 import { AdminModule } from './admin/admin.module';
+import { MailerService } from './mailer/mailer.service';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/my-database', {
+    ConfigModule.forRoot({ isGlobal: true }),
+    MongooseModule.forRoot(process.env.MONGO_URI, {
       useNewUrlParser: false,
       useUnifiedTopology: false,
       connectTimeoutMS: 5000, // 5 seconds
@@ -35,6 +36,7 @@ import { AdminModule } from './admin/admin.module';
       provide: APP_INTERCEPTOR,
       useClass: ResponseInterceptor,
     },
+    MailerService,
   ],
 })
-export class AppModule {}
+export class AppModule { }

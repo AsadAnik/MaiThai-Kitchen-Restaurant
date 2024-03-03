@@ -17,9 +17,15 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   readonly password: string;
-  
+
   @IsNotEmpty()
   readonly role: string;
+
+  readonly verified: boolean;
+
+  readonly verificationToken: string;
+  
+  readonly verificationCode: string;
 }
 
 export class UpdateUserDto {
@@ -30,4 +36,7 @@ export class UpdateUserDto {
   readonly role?: string;
   readonly phoneNumber?: string;
   readonly address?: string;
+  readonly verified?: boolean;
+  readonly verificationToken?: string;
+  readonly verificationCode?: string;
 }
