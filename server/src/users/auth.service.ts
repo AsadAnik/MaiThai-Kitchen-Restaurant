@@ -23,7 +23,9 @@ export class AuthService {
             email: userData.email,
             password: hashPassword,
             phoneNumber: userData.phoneNumber,
-            address: userData.address
+            address: userData.address,
+            verificationToken: userData.verificationToken,
+            verificationCode: userData.verificationCode,
         });
         return createUser.save();
     }

@@ -5,6 +5,7 @@ import {
   Delete,
   Param,
   Body,
+  Query,
 } from '@nestjs/common';
 import { UpdateUserDto } from './users.dto';
 import { UsersService } from './users.service';
@@ -13,6 +14,23 @@ import { User } from './schemas/user.schema';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
+
+
+  /**
+   * GET - /users/verify?code=[verificationCode]
+   * @param code 
+   * @returns 
+   */
+  @Get('verify')
+  async verifyAccount(@Query('code') code: string) {
+    const user = await this.usersService.findByVerificationCode(code);
+
+    user.verified = true;
+    user.verificationCode = null;
+    await this.usersService.update(user?._id, user);
+
+    return { message: 'Your account has been successfully verified!', user };
+  }
 
   /**
    * GET - /users

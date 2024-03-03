@@ -1,4 +1,4 @@
-import { Body,Post, Delete, Controller } from '@nestjs/common';
+import { Body,Post, Get, Controller } from '@nestjs/common';
 import { CreateAdminDto } from './admin.dto';
 import { AdminService } from './admin.service';
 
@@ -17,6 +17,11 @@ export class AdminController {
         return {message: 'Registered Admin', admin}
     }
 
+    /**
+     * Post - /admin/login
+     * @param param0 
+     * @returns 
+     */
     @Post('login')
     async login(@Body() {email, password}: CreateAdminDto): Promise<object>{
         const admin = await this.adminService.findOneByEmail(email);
@@ -27,7 +32,12 @@ export class AdminController {
         return {message: 'LoggedIn Successfuly', admin, token};
     }
 
-    @Delete('logout')
+    /**
+     * Delete - /admin/logout
+     * @param token 
+     * @returns 
+     */
+    @Get('logout')
     async logout(@Body('token') token: string): Promise<object> {
         await this.adminService.invalidateToken(token);
         return {message: 'LoggedOut Successfuly'}
