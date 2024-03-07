@@ -20,6 +20,17 @@ export class UsersService {
   }
 
   /**
+   * Find User by Email Address
+   * @param email 
+   * @returns 
+   */
+  async findByEmail(email: string) {
+    const user = await this.userModel.findOne({ email }).exec();
+    if (!user) throw new HttpException('Can not send code again', HttpStatus.BAD_REQUEST);
+    return user;
+  }
+
+  /**
    * Find All Users
    * @returns 
    */

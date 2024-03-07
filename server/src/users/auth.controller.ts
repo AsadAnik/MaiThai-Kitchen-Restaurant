@@ -10,7 +10,7 @@ export class AuthController {
     constructor(
         private readonly authService: AuthService,
         private readonly mailerService: MailerService,
-        private readonly configService: ConfigService
+        private readonly configService: ConfigService,
     ) { }
 
     /**

@@ -26,6 +26,7 @@ export class AuthService {
             address: userData.address,
             verificationToken: userData.verificationToken,
             verificationCode: userData.verificationCode,
+            verificationCodeSentAt: Date.now(),
         });
         return createUser.save();
     }
