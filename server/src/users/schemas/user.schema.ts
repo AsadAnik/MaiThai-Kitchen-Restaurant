@@ -25,13 +25,16 @@ export class User extends Document {
   role: string;
 
   @Prop({ default: false })
-  verified: boolean;
+  verified?: boolean;
 
   @Prop()
-  verificationToken: string;
+  verificationToken?: string;
 
   @Prop()
-  verificationCode: string;
+  verificationCode?: string;
+
+  @Prop({ type: Date })
+  verificationCodeSentAt?: Date;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
