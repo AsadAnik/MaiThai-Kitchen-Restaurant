@@ -5,6 +5,9 @@ import {
     REGISTER_AUTH_REQUEST,
     REGISTER_AUTH_SUCCESS,
     REGISTER_AUTH_FAIL,
+    ADMIN_LOGIN_REQUEST,
+    ADMIN_LOGIN_SUCCESS,
+    ADMIN_LOGIN_FAIL,
     CLEAR_DATA,
 } from '@/redux/constants/authConstants';
 
@@ -83,3 +86,38 @@ export const authRegisterReducer = (state = {}, action) => {
             return state;
     }
 };
+
+
+export const adminAuthReducer = (state={}, action) => {
+    switch(action.type){
+        case ADMIN_LOGIN_REQUEST: 
+            return{
+                ...state,
+                loading: true
+            };
+        case ADMIN_LOGIN_SUCCESS: 
+            return {
+                loading: false,
+                isAuth: action?.payload?.success,
+                message: action?.payload?.data?.message
+            };
+
+        case ADMIN_LOGIN_FAIL: 
+            return {
+                ...state,
+                loading: false,
+                isAuth: false,
+                error: action.payload
+            };
+        
+        case CLEAR_DATA : 
+            return {
+                ...state,
+                error: null,
+                message: ''
+            };
+
+        default: 
+            return state
+    }
+}
