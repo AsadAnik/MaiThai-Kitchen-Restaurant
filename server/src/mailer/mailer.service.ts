@@ -53,8 +53,7 @@ export class MailerService {
      */
     public generateVerificationToken(length = 32): string {
         // Use cryptographically secure random number generation for security..
-        const charecters =
-            'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charecters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let token = '';
         const charectersLength = charecters.length;
 
