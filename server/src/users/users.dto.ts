@@ -26,6 +26,14 @@ export class CreateUserDto {
   readonly verificationToken: string;
   
   readonly verificationCode: string;
+
+  readonly verificationCodeSentAt: Date;
+
+  readonly resetPasswordToken: string;
+
+  readonly resetPasswordExpiresAt: Date;
+
+  readonly resetPasswordCode: string;
 }
 
 export class UpdateUserDto {
@@ -39,4 +47,7 @@ export class UpdateUserDto {
   readonly verified?: boolean;
   readonly verificationToken?: string;
   readonly verificationCode?: string;
+  readonly resetPasswordToken?: string;
+  readonly resetPasswordExpiresAt?: Date;
+  readonly resetPasswordCode?: string;
 }

@@ -6,6 +6,7 @@ import { ConfigService } from '@nestjs/config';
 export class MailerService {
     constructor(private readonly configService: ConfigService) { }
 
+    
     /**
      * EMAIL SENDING WITH NODEMAILER SERVICE..
      * @param email
@@ -46,6 +47,7 @@ export class MailerService {
         }
     }
 
+
     /**
      * GENRATE THE VERIFICATION TOKEN..
      * @param length
@@ -63,6 +65,7 @@ export class MailerService {
 
         return token;
     }
+
 
     /**
      * GENERATE THE VERIFICATION CODE..

@@ -35,6 +35,15 @@ export class User extends Document {
 
   @Prop({ type: Date })
   verificationCodeSentAt?: Date;
+
+  @Prop({ type: String })
+  resetPasswordToken?: string;
+
+  @Prop()
+  resetPasswordCode?: string;
+
+  @Prop({ type: Date })
+  resetPasswordExpiresAt?: Date;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

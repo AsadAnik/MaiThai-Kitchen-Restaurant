@@ -46,6 +46,7 @@ export class UsersController {
     // Update keys for verify done..
     user.verified = true;
     user.verificationCode = null;
+    user.verificationToken = null;
     await this.usersService.update(user?._id, user);
 
     return { message: 'Your account has been successfully verified!', user };
