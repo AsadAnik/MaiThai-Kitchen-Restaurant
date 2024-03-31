@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { loginAuth } from '@/redux/actions/authActions';
+import { useRouter } from 'next/router';
+
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -11,6 +13,7 @@ export default function Login() {
     });
 
     const { loading, isAuth, message, error } = useSelector((state) => state.login);
+    const router = useRouter();
 
     useEffect(() => {
         if (error) {
@@ -25,6 +28,8 @@ export default function Login() {
                 position: "top-center",
                 autoClose: 2000,
             });
+
+            router('/index')
         }
     }, [isAuth, error, message]);
 
