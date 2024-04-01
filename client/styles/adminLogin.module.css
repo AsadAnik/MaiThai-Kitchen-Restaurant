@@ -1,0 +1,126 @@
+/* LoginComponent.module.css */
+
+.main{
+    background: linear-gradient(90deg, #f77352, #65b904);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 800px;
+}
+
+
+  
+  .login {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    top: 100px;
+  }
+  
+  .login__bg {
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }
+  
+  .login__form {
+    text-align: center;
+  }
+  
+  .login__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .login__inputs {
+    margin-bottom: 20px;
+  }
+  
+  .login__box {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .login__input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .login__input:focus {
+    outline: none;
+    border-color: #3178eb;
+  }
+  
+  .ri-mail-fill,
+  .ri-lock-2-fill {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    color: #ccc;
+  }
+  
+  .login__check {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .login__check-box {
+    display: flex;
+    align-items: center;
+  }
+  
+  .login__check-input {
+    margin-right: 5px;
+  }
+  
+  .login__check-label {
+    font-size: 14px;
+  }
+  
+  .login__forgot {
+    font-size: 14px;
+    color: #3178eb;
+    text-decoration: none;
+  }
+  
+  .login__button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3178eb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .login__register {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  .login img{
+    width: 52px;
+    height: auto;
+    text-align: center;
+    margin: 21px 153px;
+    border-radius: 10px tomato;
+  }
+  
+  .login__register a {
+    color: #3178eb;
+    text-decoration: none;
+  }
+  

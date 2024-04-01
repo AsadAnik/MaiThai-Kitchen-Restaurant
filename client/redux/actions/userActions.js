@@ -5,6 +5,8 @@ import {
     ONE_USER_REQUEST, ONE_USER_SUCCESS, ONE_USER_FAIL,
     UPDATE_USER_REQUEST, UPDATE_USER_SUCCESS, UPDATE_USER_FAIL,
     DELETE_USER_REQUEST, DELETE_USER_SUCCESS, DELETE_USER_FAIL,
+    USER_OTP_REQUEST,USER_OPT_SUCCESS,USER_OPT_FAIL
+
 } from '@/redux/constants/userConstants';
 
 const API_URL = process.env.API_URL;
@@ -100,3 +102,22 @@ export const deleteUser = (userId) => async (dispatch) =>  {
         });
     }
 };
+
+
+export const userOtp = (verify) => async (dispatch) => {
+    try{
+        dispatch({type: USER_OTP_REQUEST});
+
+        const {data: response} = await axios.get(`${API_URL}/users/verify?code=${verify}`, config)
+
+        dispatch({
+            type: USER_OPT_SUCCESS,
+            payload: response,
+        });
+    } catch (error){
+        dispatch({
+            type: USER_OPT_FAIL,
+            payload: error.message
+        })
+    }
+}

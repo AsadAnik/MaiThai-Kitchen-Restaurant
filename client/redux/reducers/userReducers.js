@@ -3,7 +3,7 @@ import {
     ONE_USER_REQUEST, ONE_USER_SUCCESS, ONE_USER_FAIL,
     UPDATE_USER_REQUEST, UPDATE_USER_SUCCESS, UPDATE_USER_FAIL,
     DELETE_USER_REQUEST, DELETE_USER_SUCCESS, DELETE_USER_FAIL,
-    CLEAR_DATA
+    CLEAR_DATA,USER_OTP_REQUEST,USER_OPT_SUCCESS,USER_OPT_FAIL
 } from '@/redux/constants/userConstants';
 
 
@@ -148,6 +148,42 @@ export const deleteUserReducer = (state = { user: {} }, action) => {
             };
 
         case DELETE_USER_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+            };
+
+        case CLEAR_DATA:
+            return {
+                ...state,
+                error: null,
+                deleted: null,
+            };
+
+        default:
+            return state;
+    }
+};
+
+
+
+export const userOtpReducer = (state = { user: {} }, action) => {
+    switch (action.type) {
+        case USER_OTP_REQUEST:
+            return {
+                ...state,
+                loading: true,
+            };
+
+        case USER_OPT_SUCCESS:
+            return {
+                loading: false,
+                deleted: action.payload.success,
+                user: action.payload.data,
+            };
+
+        case USER_OPT_FAIL:
             return {
                 ...state,
                 loading: false,
