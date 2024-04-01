@@ -9,7 +9,13 @@ import {
     REGISTER_AUTH_FAIL,
     ADMIN_LOGIN_REQUEST,
     ADMIN_LOGIN_SUCCESS,
-    ADMIN_LOGIN_FAIL
+    ADMIN_LOGIN_FAIL,
+    FORGOT_PASSWORD_REQUEST,
+    FORGOT_PASSWORD_SUCCESS,
+    FORGOT_PASSWORD_FAIL,
+    RESET_PASSWORD_REQUEST,
+    REST_PASSWORD_SUCCESS,
+    REST_PASSWORD_FAIL
 } from '@/redux/constants/authConstants';
 
 const API_URL = process.env.API_URL;
@@ -75,5 +81,39 @@ export const loginAdminAuth = (authData) => async (dispatch) => {
             type: ADMIN_LOGIN_FAIL,
             payload: error.message
         });
+    }
+}
+
+export const forgotPasswordAuth = (forgotData) => async (dispatch) => {
+    try{
+        dispatch({type: FORGOT_PASSWORD_REQUEST});
+        const {data: response} = await axios.post(`${API_URL}/auth/forgot-password`, forgotData, config);
+
+        dispatch({
+            type: FORGOT_PASSWORD_SUCCESS,
+            payload: response
+        })
+    } catch(error) {
+        dispatch({
+            type: FORGOT_PASSWORD_FAIL,
+            payload: error.message
+        })
+    }
+}
+
+export const resetPasswordAuth = (resetData) => async (dispatch) => {
+    try{
+        dispatch({type: RESET_PASSWORD_REQUEST});
+        const {data: response} = await axios.post(`${API_URL}/auth/forgot-password`, resetData, config);
+
+        dispatch({
+            type: REST_PASSWORD_SUCCESS,
+            payload: response
+        })
+    } catch(error) {
+        dispatch({
+            type: REST_PASSWORD_FAIL,
+            payload: error.message
+        })
     }
 }

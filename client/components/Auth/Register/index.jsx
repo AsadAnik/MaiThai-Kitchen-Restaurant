@@ -238,7 +238,7 @@ export default function Register() {
                 autoClose: 2000
             });
 
-            route('/index');
+            // route('/index');
         }
     }, [isAuth, error, message]);
 
@@ -271,11 +271,11 @@ export default function Register() {
         } else if (!isValidEmail(registerAuthData.email)) {
             newErrors.email = 'Invalid email format';
         }
-        if (!registerAuthData.phoneNumber) {
-            newErrors.phoneNumber = 'Phone number is required';
-        } else if (!isValidPhoneNumber(registerAuthData.phoneNumber)) {
-            newErrors.phoneNumber = 'Phone number must be 10 digits';
-        }
+        // if (!registerAuthData.phoneNumber) {
+        //     newErrors.phoneNumber = 'Phone number is required';
+        // } else if (!isValidPhoneNumber(registerAuthData.phoneNumber)) {
+        //     newErrors.phoneNumber = 'Phone number must be 10 digits';
+        // }
         if (!registerAuthData.password) {
             newErrors.password = 'Password is required';
         } else if (!isValidPassword(registerAuthData.password)) {
