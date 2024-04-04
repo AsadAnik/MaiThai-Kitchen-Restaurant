@@ -1,5 +1,5 @@
 // LoginComponent.jsx
-'use client'
+
 import React,{useState,useEffect} from 'react';
 import styles from '../../styles/adminLogin.module.css'; 
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,7 +32,7 @@ const LoginComponent = () => {
                 autoClose: 2000,
             });
 
-            route('/overview')
+            route.push('overview')
         }
     }, [isAuth, error, message]);
 
@@ -82,7 +82,7 @@ const LoginComponent = () => {
               <label htmlFor="user-check" className={styles.login__check__label}>Remember me</label>
             </div>
 
-            <Link href="admin/forgotPassword" className={styles.login__forgot}>Forgot Password?</Link>
+            <a onClick={() => route.push('forgotPassword')} className={styles.login__forgot}>Forgot Password?</a>
           </div>
 
           <button type="submit" className={styles.login__button}>Login</button>
