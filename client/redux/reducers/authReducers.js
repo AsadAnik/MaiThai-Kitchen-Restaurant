@@ -11,6 +11,9 @@ import {
     FORGOT_PASSWORD_REQUEST,
     FORGOT_PASSWORD_SUCCESS,
     FORGOT_PASSWORD_FAIL,
+    ADMIN_OTP_REQUESST,
+    ADMIN_OTP_SUCCESS,
+    ADMIN_OPT_FAIL,
     RESET_PASSWORD_REQUEST,
     RESET_PASSWORD_SUCCESS,
     REST_PASSWORD_FAIL,
@@ -180,6 +183,42 @@ export const resetAuthReducer = (state={}, action) => {
             };
 
         case REST_PASSWORD_FAIL: 
+            return {
+                ...state,
+                loading: false,
+                isAuth: false,
+                error: action.payload
+            };
+        
+        case CLEAR_DATA : 
+            return {
+                ...state,
+                error: null,
+                message: ''
+            };
+
+        default: 
+            return state
+    }
+}
+
+
+export const adminOptReducer = (state={}, action) => {
+    switch(action.type){
+        case ADMIN_OTP_REQUESST: 
+            return{
+                ...state,
+                loading: true
+            };
+        case ADMIN_OTP_SUCCESS:
+            localStorage.setItem('resetPasswordToken',action?.payload?.data?.user?.resetPasswordToken)
+            return {
+                loading: false,
+                isAuth: action?.payload?.success,
+                message: action?.payload?.data?.message,
+            };
+
+        case ADMIN_OPT_FAIL: 
             return {
                 ...state,
                 loading: false,
